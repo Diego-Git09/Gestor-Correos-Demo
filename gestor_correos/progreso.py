@@ -8,7 +8,7 @@ import subprocess
 from datetime import datetime, timedelta
 import tkinter as tk
 from tkinter import ttk, messagebox, filedialog
-from . import automatizacion as _automatizacion
+from . import adaptadores_demo as _simulacion
 from . import configuracion as _configuracion
 from . import eventos as _eventos
 from . import imagenes as _imagenes
@@ -17,7 +17,7 @@ from . import utilidades as _utilidades
 
 
 class VentanaProgreso:
-    FICHAS = (('enviados', 'Enviados', _tema.VERDE), ('errores', 'Fallidos', _tema.ROJO), ('omitidos', 'Omitidos', _tema.APAGADO), ('pendientes', 'Pendientes', _tema.AMBAR), ('sin_correo', 'Sin correo', _tema.VIOLETA))
+    FICHAS = (('enviados', 'Simulados', _tema.VERDE), ('errores', 'Fallidos', _tema.ROJO), ('omitidos', 'Omitidos', _tema.APAGADO), ('pendientes', 'Pendientes', _tema.AMBAR), ('sin_correo', 'Sin correo', _tema.VIOLETA))
 
     def __init__(self, root, args):
         self.root = root
@@ -72,19 +72,14 @@ class VentanaProgreso:
         root.after(150, self.procesar_cola)
 
     def _trabajo(self, *args):
-        ruta_ejecucion = os.path.join(_configuracion.BASE_DIR, 'logs_ejecucion', f'ejecucion_{datetime.now():%Y-%m-%d}.log')
-        escritor = _eventos.EscritorCola(_eventos.COLA, ruta_ejecucion)
-        salida_original, error_original = (sys.stdout, sys.stderr)
-        sys.stdout = escritor
-        sys.stderr = escritor
+        self.resultados = []
+        self.reporte_demo = None
         try:
-            _automatizacion.ejecutar_bot(*args)
+            self.resultados, self.reporte_demo = _simulacion.ejecutar_campana(*args)
         except Exception:
-            print('❌ Error inesperado:\n' + traceback.format_exc())
-            _eventos.ui_aviso('error', 'Error inesperado', 'El bot se detuvo por un error. El detalle está en la ventana de progreso.')
+            _eventos.COLA.put(('log', 'Error en la simulación:\n' + traceback.format_exc()))
+            _eventos.ui_aviso('error', 'No se pudo simular', 'Revisa el rango, las plantillas y el PDF. No se realizaron envíos.')
         finally:
-            escritor.vaciar()
-            sys.stdout, sys.stderr = (salida_original, error_original)
             _eventos.COLA.put(('fin',))
 
     def detener(self):
@@ -205,11 +200,11 @@ class VentanaProgreso:
         if self.cerrar_pendiente:
             self.root.destroy()
             return
-        self.root.title('Automatización Correos - Terminado')
+        self.root.title('Gestor de correos · Simulación terminada · 0 envíos reales')
         self.btn.config(text='Cerrar', state='normal', style='Accent.TButton', command=self.root.destroy)
         carpeta_logs = os.path.join(_configuracion.BASE_DIR, 'logs_ejecucion')
         ttk.Button(self.barra_botones, text='📂  Abrir carpeta de logs', command=lambda: _utilidades.abrir_ruta(carpeta_logs if os.path.isdir(carpeta_logs) else _configuracion.BASE_DIR)).pack(side='left', padx=(0, 8))
-        ttk.Button(self.barra_botones, text='📄  Abrir reporte', command=lambda: _utilidades.abrir_ruta(_configuracion.LOG_FILE if os.path.exists(_configuracion.LOG_FILE) else _configuracion.BASE_DIR)).pack(side='left')
+        ttk.Button(self.barra_botones, text='📄  Abrir reporte demo', command=lambda: _utilidades.abrir_ruta(str(self.reporte_demo) if self.reporte_demo else _configuracion.BASE_DIR)).pack(side='left')
 
     def mostrar_problemas(self, lista):
         if self.cerrar_pendiente:

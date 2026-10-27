@@ -4,13 +4,16 @@
   "definiciones_originales": 120,
   "definiciones_mapeadas": 120,
   "faltantes": [],
-  "firmas_cambiadas": [],
+  "firmas_cambiadas": [
+    "lanzar_gui"
+  ],
   "errores_sintaxis": [],
   "referencias_organizacion_original": [],
   "modulos_originales_separados": 21,
-  "python_copia": 28,
+  "python_copia": 30,
   "parametros_con_constantes_reubicadas": [
     "esperar_reconexion",
     "construir_marca_de_agua"
-  ]
+  ],
+  "actualizacion_interfaz": "Formulario y progreso originales conectados a adaptadores_demo. lanzar_gui añade argumentos opcionales para pruebas."
 }

@@ -1,27 +1,36 @@
 # Gestor de correos · Demo local
 
 Aplicación de escritorio en Python para demostrar la preparación de campañas: contactos, mensajes personalizados, adjuntos PDF y reportes. **Esta versión simula el proceso; no envía correos ni inicia sesión en servicios reales.**
-Para poder hacerlo funcional se debe poner dentro del código los links de donde sacara los correos y realizara las gestiones, etc. 
-Por seguridad, se eliminaron los links que lo hacian 100% funcional
+La demo conserva ahora el diseño del formulario y la ventana de progreso originales. Los campos de cuenta son ficticios y están deshabilitados. Las integraciones reales siguen bloqueadas: no basta con cambiar enlaces para activarlas.
+
+## Vista previa
+
+### Formulario
+
+![Formulario original con datos ficticios](docs/imagenes/formulario-demo.png)
+
+### Resultado de la simulación
+
+![Simulación con 2 contactos simulados, 1 omitido y 0 envíos reales](docs/imagenes/resultado-demo.png)
 
 ## Origen y objetivo
 
 Este proyecto personal nació por iniciativa propia para automatizar tareas repetitivas de seguimiento de contactos. La versión de portafolio usa una identidad genérica y datos ficticios. No incluye contactos, credenciales, logotipos, registros ni ejecutables de la instalación original.
 
-El programa original reunía su código en un archivo de 3427 líneas. Se separaron sus 120 funciones y clases principales en módulos por responsabilidad. La lógica de integración original se conserva para revisión, con sus puntos de entrada reales bloqueados. La demo tiene una interfaz y un recorrido local propios.
+El programa original reunía su código en un archivo de 3427 líneas. Se separaron sus 120 funciones y clases principales en módulos por responsabilidad. La lógica de integración original se conserva para revisión, con sus puntos de entrada reales bloqueados. La demo conserva el diseño original mediante adaptadores locales: mantiene las tarjetas, los colores, el formulario y la ventana de progreso, con identidad genérica y sin conexiones reales.
 
 ## Qué puedes probar
 
-- Seleccionar uno o varios contactos ficticios.
+- Elegir un rango de contactos ficticios en el formulario original.
 - Personalizar un asunto y un mensaje mediante `{nombre}`, `{cliente}` y `{rubro}`.
 - Revisar el mensaje antes de simular la campaña.
 - Comprobar un PDF sin modificarlo ni enviarlo.
 - Simular el lote y distinguir contactos procesados de contactos sin correo.
-- Exportar los resultados de la simulación a un archivo JSON nuevo.
+- Consultar el reporte JSON generado en `datos/reportes_demo/` al terminar una simulación. El modo de terminal también permite exportarlo a una ruta elegida.
 
 ## Instalación
 
-Necesitas Python y Tkinter. Las comprobaciones de esta copia se realizan en Linux con Python 3.14; la compatibilidad con Windows y macOS aún no está verificada.
+Necesitas Python, Tkinter, CustomTkinter y Pillow. CustomTkinter y Pillow se instalan con `requirements.txt`. Las comprobaciones de esta copia se realizan en Linux con Python 3.14; la compatibilidad con Windows y macOS aún no está verificada.
 
 Desde una terminal abierta en esta carpeta:
 
@@ -32,7 +41,7 @@ python -m pip install -r requirements.txt
 python main.py
 ```
 
-Si falta Tkinter, instala el paquete correspondiente a tu distribución de Linux antes de abrir la ventana. La demo utiliza Tkinter; los módulos de la interfaz anterior usan CustomTkinter.
+Si falta Tkinter, instala el paquete correspondiente a tu distribución de Linux antes de abrir la ventana. La demo usa el formulario original con Tkinter y CustomTkinter. No necesita Selenium ni acceso al llavero para abrirse.
 
 ### Prueba sin ventanas
 
@@ -60,7 +69,8 @@ El programa rechaza sobrescribir un reporte existente. Usa solo documentos ficti
 |---|---|
 | `main.py` | Entrada gráfica o por terminal |
 | `demostracion.py` | Preparación y simulación local de campañas |
-| `interfaz_demo.py` | Ventana de demostración |
+| `interfaz_demo.py` y `formulario.py` | Entrada y formulario con el diseño original |
+| `adaptadores_demo.py` | Servicios ficticios del formulario y simulación sin cuentas |
 | `configuracion.py` | Rutas, constantes y opciones |
 | `contactos.py` y `validacion.py` | Limpieza y validación de contactos |
 | `plantillas.py` | Variables y mensajes personalizados |
@@ -69,7 +79,7 @@ El programa rechaza sobrescribir un reporte existente. Usa solo documentos ficti
 | `eventos.py` y `excepciones.py` | Comunicación entre componentes y errores |
 | `automatizacion.py`, `crm.py`, `correo.py`, `navegador.py` | Integraciones originales sanitizadas, bloqueadas en esta copia |
 | `credenciales.py` | Gestión original de identidad; acceso real bloqueado |
-| `tema.py`, `imagenes.py`, `visor_log.py`, `progreso.py`, `formulario.py` | Interfaz original separada; el formulario conectado a cuentas está bloqueado |
+| `tema.py`, `imagenes.py` y `progreso.py` | Tema, visor de registros y progreso originales, conectados a la simulación |
 | `conexion.py`, `sistema.py`, `utilidades.py` | Soporte del diseño original |
 
 Los módulos se encuentran dentro de `gestor_correos/`. El [mapa de refactorización](documentacion/mapa_refactorizacion.json) permite ubicar cada función del archivo original.

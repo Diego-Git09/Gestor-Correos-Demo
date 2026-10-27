@@ -1,2 +1,4 @@
-# Demo local: biblioteca para comprobar PDF. Tkinter pertenece al sistema.
+# Demo con el diseño original (Tkinter y CustomTkinter).
 pypdf==6.21.3
+customtkinter==6.0.0
+Pillow==13.0.0

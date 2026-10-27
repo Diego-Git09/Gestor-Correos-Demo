@@ -10,10 +10,10 @@ from tkinter import ttk, messagebox, filedialog
 import customtkinter as ctk
 from . import configuracion as _configuracion
 from . import contactos as _contactos
-from . import credenciales as _credenciales
-from . import crm as _crm
+from . import adaptadores_demo as _credenciales
+from . import adaptadores_demo as _crm
 from . import eventos as _eventos
-from . import navegador as _navegador
+from . import adaptadores_demo as _demo
 from . import persistencia as _persistencia
 from . import plantillas as _plantillas
 from . import progreso as _progreso
@@ -22,15 +22,17 @@ from . import tema as _tema
 from . import utilidades as _utilidades
 
 
-def lanzar_gui():
-    raise RuntimeError('Integración real deshabilitada en la versión de portafolio. Usa el modo demostración.')
+def lanzar_gui(root=None, ejecutar_bucle=True):
+    """Formulario original conectado exclusivamente a servicios de demostración."""
+    _demo.preparar_entorno()
+    ctk.set_appearance_mode('dark')
     if _configuracion.ES_WINDOWS:
         try:
             import ctypes
             ctypes.windll.shell32.SetCurrentProcessExplicitAppUserModelID('Demo.GestorCorreos.1.0')
         except Exception:
             pass
-    root = ctk.CTk()
+    root = root if root is not None else ctk.CTk()
 
     def _error_ui(exc, val, tb):
         texto = ''.join(traceback.format_exception(exc, val, tb))
@@ -68,11 +70,11 @@ def lanzar_gui():
             entorno = guardadas
     except Exception:
         messagebox.showwarning('Credenciales', 'No se pudieron recuperar las credenciales. Ingrésalas nuevamente.', parent=root)
-    recordar_var = tk.BooleanVar(value=bool(cfg.get('recordar_credenciales')))
-    ejecutivo_var = tk.StringVar(value=cfg.get('nombre_ejecutivo', ''))
+    recordar_var = tk.BooleanVar(value=False)
+    ejecutivo_var = tk.StringVar(value=_demo.EJECUTIVO)
     ruta_pdf_var = tk.StringVar(value=cfg.get('ruta_pdf') or '')
     headless_var = tk.BooleanVar(value=True)
-    dry_run_var = tk.BooleanVar(value=bool(cfg.get('dry_run', False)))
+    dry_run_var = tk.BooleanVar(value=True)
     asunto_var = tk.StringVar(value=cfg.get('asunto') or _configuracion.ASUNTO_CORREO_DEFECTO)
     asunto_gestion_var = tk.StringVar(value=cfg.get('asunto_gestion') or _configuracion.ASUNTO_GESTION)
     reintento_confirmado_id = None
@@ -83,7 +85,7 @@ def lanzar_gui():
     cab = ttk.Frame(root, padding=(24, 18, 24, 6))
     cab.pack(fill='x')
     ttk.Label(cab, text='Demo · MAILBOT', style='Title.TLabel').pack(anchor='w')
-    ttk.Label(cab, text=f'Automatización de correos y gestiones  ·  {_configuracion.NOMBRE_SO}', style='Muted.TLabel').pack(anchor='w')
+    ttk.Label(cab, text=f'DEMO LOCAL · Sin cuentas ni envíos reales · {_configuracion.NOMBRE_SO}', style='Muted.TLabel').pack(anchor='w')
     _tema.BarraNeon(root, 3).pack(fill='x', padx=24, pady=(6, 8))
     pie = ttk.Frame(root, padding=(24, 10, 24, 18))
     pie.pack(side='bottom', fill='x')
@@ -95,21 +97,23 @@ def lanzar_gui():
     fila1.grid(row=0, column=0, sticky='ew', pady=(0, 10))
     fila1.columnconfigure(0, weight=1, uniform='fila1')
     fila1.columnconfigure(1, weight=1, uniform='fila1')
-    b_mgr, c_mgr = _tema.tarjeta(fila1, 'Manager')
+    b_mgr, c_mgr = _tema.tarjeta(fila1, 'Manager · Datos ficticios')
     b_mgr.grid(row=0, column=0, sticky='nsew', padx=(0, 6))
     c_mgr.columnconfigure(1, weight=1)
     ttk.Label(c_mgr, text='Usuario', style='Card.TLabel').grid(row=0, column=0, sticky='w', pady=4)
     entry_user_crm = ttk.Entry(c_mgr, width=16)
     if entorno.get('user'):
         entry_user_crm.insert(0, entorno['user'])
+    entry_user_crm.configure(state='disabled')
     entry_user_crm.grid(row=0, column=1, sticky='ew', padx=(12, 0), pady=4)
     ttk.Label(c_mgr, text='Contraseña', style='Card.TLabel').grid(row=1, column=0, sticky='w', pady=4)
     entry_pass_crm = ttk.Entry(c_mgr, width=16, show='*')
     if entorno.get('password'):
         entry_pass_crm.insert(0, entorno['password'])
+    entry_pass_crm.configure(state='disabled')
     entry_pass_crm.grid(row=1, column=1, sticky='ew', padx=(12, 0), pady=4)
     ttk.Label(c_mgr, text='Nombre Ejecutivo CRM', style='Card.TLabel').grid(row=2, column=0, sticky='w')
-    ctk.CTkEntry(c_mgr, textvariable=ejecutivo_var, bg_color=_tema.PANEL).grid(row=2, column=1, sticky='ew', padx=(12, 0), pady=4)
+    ctk.CTkEntry(c_mgr, textvariable=ejecutivo_var, bg_color=_tema.PANEL, state='disabled').grid(row=2, column=1, sticky='ew', padx=(12, 0), pady=4)
 
     def persistir_identidad(*_):
         try:
@@ -119,7 +123,7 @@ def lanzar_gui():
             messagebox.showerror('Credenciales', 'No se pudo guardar en el almacén seguro del sistema. Desmarca Recordar credenciales o habilita el llavero del sistema.', parent=root)
             return False
     ejecutivo_var.trace_add('write', lambda *_: _persistencia.actualizar_config({'nombre_ejecutivo': ejecutivo_var.get().strip()}))
-    ctk.CTkCheckBox(c_mgr, text='Recordar credenciales', variable=recordar_var, bg_color=_tema.PANEL, command=persistir_identidad).grid(row=3, column=0, columnspan=2, sticky='w', pady=5)
+    ctk.CTkCheckBox(c_mgr, text='Recordar credenciales (desactivado)', variable=recordar_var, state='disabled', bg_color=_tema.PANEL, command=persistir_identidad).grid(row=3, column=0, columnspan=2, sticky='w', pady=5)
     entry_user_crm.bind('<FocusOut>', persistir_identidad)
     entry_pass_crm.bind('<FocusOut>', persistir_identidad)
 
@@ -140,7 +144,7 @@ def lanzar_gui():
     entry_inicio.grid(row=0, column=1, sticky='w', padx=(12, 0), pady=4)
     ttk.Label(c_rng, text='Hasta N°', style='Card.TLabel').grid(row=1, column=0, sticky='w', pady=4)
     entry_fin = ttk.Entry(c_rng, width=8)
-    entry_fin.insert(0, str(sugerencia['fin']) if sugerencia and sugerencia['fin'] else '200')
+    entry_fin.insert(0, str(sugerencia['fin']) if sugerencia and sugerencia['fin'] else str(len(_contactos.cargar_contactos())))
     entry_fin.grid(row=1, column=1, sticky='w', padx=(12, 0), pady=4)
     lbl_avance = ttk.Label(c_rng, text='Sin avance previo', style='CardMuted.TLabel')
     lbl_avance.grid(row=2, column=0, columnspan=2, sticky='w', pady=(2, 0))
@@ -162,7 +166,7 @@ def lanzar_gui():
     sb_cuerpo.pack(side='right', fill='y')
     txt_cuerpo.pack(side='left', fill='both', expand=True)
     txt_cuerpo.insert('1.0', cfg.get('cuerpo') or _configuracion.CUERPO_CORREO_DEFECTO)
-    ttk.Label(c_msg, text='Variables que se reemplazan por los datos de cada contacto: {nombre}  {cliente}  {rubro}. La firma de Gmail se agrega sola al final.', style='CardMuted.TLabel', wraplength=560, justify='left').grid(row=4, column=0, sticky='w', pady=(0, 8))
+    ttk.Label(c_msg, text='Variables que se reemplazan por los datos de cada contacto: {nombre}  {cliente}  {rubro}. Los mensajes solo se simulan; no se utiliza Gmail.', style='CardMuted.TLabel', wraplength=560, justify='left').grid(row=4, column=0, sticky='w', pady=(0, 8))
     ttk.Label(c_msg, text='Asunto de la gestión (Manager)', style='Card.TLabel').grid(row=5, column=0, sticky='w')
     ttk.Entry(c_msg, textvariable=asunto_gestion_var).grid(row=6, column=0, sticky='ew', pady=(3, 8))
     b_dat, c_dat = _tema.tarjeta(body, 'Datos, adjuntos y opciones')
@@ -251,7 +255,7 @@ def lanzar_gui():
     fila_botones.grid(row=7, column=0, sticky='w')
     ttk.Button(fila_botones, text='👁  Vista previa', command=vista_previa).pack(side='left')
     ttk.Button(fila_botones, text='↺  Restaurar original', command=restaurar_texto).pack(side='left', padx=8)
-    ttk.Button(fila_botones, text='Revisar pendientes', command=abrir_revision_pendientes).pack(side='left')
+    ttk.Button(fila_botones, text='Pendientes (no aplica a demo)', state='disabled', command=abrir_revision_pendientes).pack(side='left')
     sincronizando = [False]
     cola_sync = queue.Queue()
 
@@ -263,9 +267,6 @@ def lanzar_gui():
             messagebox.showwarning('Datos incompletos', 'Ingresa usuario, contraseña y Nombre Ejecutivo CRM.', parent=root)
             return
         if not persistir_identidad():
-            return
-        if not _navegador.chrome_instalado():
-            messagebox.showerror('Chrome no encontrado', 'Instala Google Chrome en Aplicaciones.', parent=root)
             return
         sincronizando[0] = True
         btn_sync.configure(state='disabled')
@@ -304,7 +305,7 @@ def lanzar_gui():
                         entry_fin.delete(0, 'end')
                         entry_fin.insert(0, str(valor))
                         root.bell()
-                        messagebox.showinfo('Sincronización completada', f'Sincronización completada: {valor} contactos de tu cartera actualizados.', parent=root)
+                        messagebox.showinfo('Sincronización completada', f'Base de ejemplo cargada: {valor} contactos ficticios. No se accedió a Internet.', parent=root)
                     else:
                         lbl_base.config(text='Sincronización fallida', foreground=_tema.ROJO)
                         messagebox.showerror('Sincronización', valor, parent=root)
@@ -322,9 +323,9 @@ def lanzar_gui():
         else:
             ruta_pdf_var.set('')
             lbl_pdf_estado.config(text='Sin PDF adjunto', foreground=_tema.APAGADO)
-    btn_sync = ctk.CTkButton(c_dat, text='🔄 Sincronizar Base Web', command=iniciar_sincronizacion, bg_color=_tema.PANEL)
+    btn_sync = ctk.CTkButton(c_dat, text='🔄 Cargar base de ejemplo', command=iniciar_sincronizacion, bg_color=_tema.PANEL)
     btn_sync.grid(row=0, column=0, sticky='w', pady=(0, 6))
-    lbl_base = ttk.Label(c_dat, text='Sincroniza tu cartera antes de iniciar', style='Card.TLabel', wraplength=280)
+    lbl_base = ttk.Label(c_dat, text='Contactos ficticios del proyecto', style='Card.TLabel', wraplength=280)
     lbl_base.grid(row=0, column=1, sticky='w', padx=12)
     if os.path.exists(_configuracion.CONTACTOS_FILE):
         try:
@@ -336,8 +337,8 @@ def lanzar_gui():
     lbl_pdf_estado.grid(row=2, column=1, sticky='w', padx=12, pady=(0, 8))
     if ruta_pdf_var.get():
         lbl_pdf_estado.config(text=f'📎 {os.path.basename(ruta_pdf_var.get())}', foreground=_tema.VERDE)
-    ttk.Checkbutton(c_dat, text='Ejecutar en segundo plano (sin ventanas)', variable=headless_var, style='Card.TCheckbutton').grid(row=3, column=0, columnspan=2, sticky='w', pady=2)
-    ttk.Checkbutton(c_dat, text='Modo prueba (sin envíos ni gestiones reales)', variable=dry_run_var, style='Card.TCheckbutton').grid(row=4, column=0, columnspan=2, sticky='w', pady=2)
+    ttk.Checkbutton(c_dat, text='Ejecutar en segundo plano (sin ventanas)', variable=headless_var, state='disabled', style='Card.TCheckbutton').grid(row=3, column=0, columnspan=2, sticky='w', pady=2)
+    ttk.Checkbutton(c_dat, text='Modo prueba (sin envíos ni gestiones reales)', variable=dry_run_var, state='disabled', style='Card.TCheckbutton').grid(row=4, column=0, columnspan=2, sticky='w', pady=2)
 
     def al_presionar_iniciar():
         nonlocal huella_campana_guardada, reintento_confirmado_id, solo_gestion_id, log_destino, reintento_preparado, solo_ids
@@ -382,9 +383,10 @@ def lanzar_gui():
             messagebox.showwarning('PDF no encontrado', f'No se encuentra el PDF guardado:\n{ruta_pdf_var.get()}\n\nSelecciónalo otra vez o quita la ruta antes de iniciar.', parent=root)
             return
         try:
-            texto_resumen = _reportes.resumen_previo(i_idx, f_idx, solo_ids)
-        except Exception as e:
-            texto_resumen = f'(No se pudo calcular el resumen: {e})'
+            texto_resumen = _demo.resumen_previo(i_idx, f_idx, solo_ids)
+        except ValueError as error:
+            messagebox.showerror('Rango no válido', str(error), parent=root)
+            return
         if not messagebox.askyesno('Confirmar inicio', texto_resumen + '\n\n¿Iniciar?', parent=root):
             return
         huella_actual = _reportes.huella_plantilla(asunto, cuerpo)
@@ -405,21 +407,25 @@ def lanzar_gui():
         solo_ids = set()
         reintento_preparado = False
         _eventos.DETENER.clear()
-        root.after(50, lambda: _progreso.VentanaProgreso(root, args))
+        def abrir_progreso():
+            root.gestor_progreso = _progreso.VentanaProgreso(root, args)
+        root.after(50, abrir_progreso)
 
     def confirmar_cierre_sesion_gmail():
-        confirmado = messagebox.askyesno('Cerrar sesión de Gmail', 'Se eliminarán los datos locales de la sesión de Gmail. La próxima ejecución solicitará iniciar sesión nuevamente.\n\n¿Continuar?', parent=root)
-        if not confirmado:
-            return
-        if _navegador.cerrar_sesion_gmail():
-            messagebox.showinfo('Gmail', 'La sesión local de Gmail se cerró correctamente.', parent=root)
-        else:
-            messagebox.showerror('Gmail', 'No se pudo eliminar el perfil de Gmail. Cierra Chrome e inténtalo de nuevo.', parent=root)
+        messagebox.showinfo('Demostración local', 'No hay ninguna sesión de Gmail abierta. No se borran perfiles ni se usan credenciales.', parent=root)
     pie.columnconfigure(0, weight=3)
     pie.columnconfigure(1, weight=1)
-    ttk.Button(pie, text='🚀 Iniciar Automático', style='Accent.TButton', command=al_presionar_iniciar).grid(row=0, column=0, sticky='ew', padx=(0, 8))
-    ttk.Button(pie, text='Cerrar sesión de Gmail', command=confirmar_cierre_sesion_gmail).grid(row=0, column=1, sticky='ew')
-    root.mainloop()
+    ttk.Button(pie, text='🚀 Iniciar simulación', style='Accent.TButton', command=al_presionar_iniciar).grid(row=0, column=0, sticky='ew', padx=(0, 8))
+    ttk.Button(pie, text='Sin sesión de Gmail', command=confirmar_cierre_sesion_gmail).grid(row=0, column=1, sticky='ew')
+    controles = {'root': root, 'inicio': entry_inicio, 'fin': entry_fin, 'asunto': asunto_var,
+                 'mensaje': txt_cuerpo, 'pdf': ruta_pdf_var, 'prueba': dry_run_var,
+                 'usuario': entry_user_crm, 'password': entry_pass_crm,
+                 'simular': al_presionar_iniciar, 'vista_previa': vista_previa,
+                 'sincronizar': iniciar_sincronizacion, 'base': lbl_base}
+    root.gestor_controles = controles
+    if ejecutar_bucle:
+        root.mainloop()
+    return controles
 
 def vista_previa_ventana():
     raise RuntimeError('Integración real deshabilitada en la versión de portafolio. Usa el modo demostración.')

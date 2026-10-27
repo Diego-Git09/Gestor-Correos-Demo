@@ -1,5 +1,7 @@
 # Comprobaciones de la copia de portafolio
 
+La sección «Restauración del diseño original» al final contiene el resultado vigente de la interfaz. Los apartados anteriores conservan la revisión de la primera demo.
+
 Fecha: 27 de octubre de 2026.
 
 ## Separación y original
@@ -38,3 +40,20 @@ El recorrido real de CRM y correo cambió intencionalmente: sus puntos de entrad
 La nueva interfaz es una demostración propia; no se presenta como una réplica exacta del formulario original. Las funciones originales de interfaz permanecen separadas para revisión. Las pruebas se hicieron en este equipo Linux con Python 3.14.4, no en Windows ni macOS.
 
 No se creó un repositorio remoto, no se hicieron commits ni se publicó código. La selección final de archivos, la licencia y la subida manual por el usuario siguen pendientes.
+
+## Restauración del diseño original
+
+Se conectaron el formulario, el tema y el progreso originales a servicios locales de demostración. Se mantiene una identidad genérica; no se restauraron logos ni datos de la organización original.
+
+- 18 pruebas aprobadas con dependencias de desarrollo y Tk real, sin omisiones.
+- Incluyen 5 pruebas gráficas: estructura del formulario y cuentas bloqueadas, vista previa, simulación completa con reporte, rechazo de rango incorrecto y carga local de contactos.
+- Se mantienen los 29 casos de equivalencia de funciones puras dentro de una de las pruebas.
+- Se comprobó que dry_run=False no habilita envíos en el adaptador.
+- La simulación genera 2 resultados simulados, 1 omitido y 0 envíos reales.
+- El formulario y el progreso no importan Selenium, keyring ni los módulos de CRM, correo y automatización real.
+
+La dependencia mínima cambió: la ventana original necesita CustomTkinter 6.0.0 y Pillow 13.0.0, además de pypdf 6.21.3. Se añadieron al entorno temporal de la demo; no al Python habitual. Los datos y reportes quedan bajo datos/, excluido de Git.
+
+El repositorio ya había sido publicado por el usuario antes de esta restauración. Estos cambios se mantienen únicamente en la copia local: no se creó un commit ni se subieron cambios durante esta tarea. El archivo de la aplicación original sigue intacto.
+
+Las 5 pruebas gráficas del formulario restaurado también pasaron en el entorno mínimo actualizado (pypdf, CustomTkinter y Pillow), sin Selenium ni keyring. El modo de terminal sigue produciendo 2 simulados, 1 omitido y 0 envíos reales; pip check no detectó incompatibilidades.
