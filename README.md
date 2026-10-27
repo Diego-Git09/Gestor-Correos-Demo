@@ -1,6 +1,8 @@
 # Gestor de correos · Demo local
 
 Aplicación de escritorio en Python para demostrar la preparación de campañas: contactos, mensajes personalizados, adjuntos PDF y reportes. **Esta versión simula el proceso; no envía correos ni inicia sesión en servicios reales.**
+Para poder hacerlo funcional se debe poner dentro del código los links de donde sacara los correos y realizara las gestiones, etc. 
+Por seguridad, se eliminaron los links que lo hacian 100% funcional
 
 ## Origen y objetivo
 
@@ -92,7 +94,7 @@ Para incluir la ventana real en una sesión gráfica:
 GESTOR_UI_REAL=1 python -m unittest discover -s tests -v
 ```
 
-Los casos de equivalencia comparan las funciones separadas con 29 resultados de referencia obtenidos del original usando entradas ficticias. Esto comprueba una parte de la lógica; no acredita que la automatización con servicios reales siga funcionando.
+Los casos de equivalencia comparan las funciones separadas con 29 resultados de referencia obtenidos del original usando entradas ficticias.
 
 ## Integraciones y privacidad
 
@@ -102,6 +104,3 @@ No se necesita Chrome, una cuenta de correo, un CRM ni un llavero de contraseña
 
 Los datos de ejecución de esos módulos apuntan a `datos/` dentro de esta copia o a la ruta definida por `GESTOR_DATOS_DIR`. No reutilizan la carpeta de perfiles de la aplicación original. Esta adaptación no constituye un aislamiento de seguridad para ejecutar código desconocido.
 
-## Estado
-
-Copia local en preparación. No se publicó en GitHub. La licencia del código propio y la presentación final se decidirán antes de publicar. Los resultados y limitaciones de la revisión se documentan en `documentacion/COMPROBACIONES.md`.
