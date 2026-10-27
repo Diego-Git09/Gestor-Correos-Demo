@@ -1,0 +1,16 @@
+{
+  "python": "3.14.4",
+  "fecha": "2026-10-27",
+  "paquetes": {
+    "pypdf": "6.21.3",
+    "customtkinter": "6.0.0",
+    "Pillow": "13.0.0",
+    "selenium": "4.51.0",
+    "webdriver-manager": "4.1.2",
+    "keyring": "25.7.0",
+    "cryptography": "50.0.2",
+    "PyMuPDF": "2.0",
+    "psutil": "7.2.2"
+  },
+  "sistema": "Linux, mismo equipo; no equivale a otro sistema operativo nuevo"
+}

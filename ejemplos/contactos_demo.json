@@ -1,0 +1,20 @@
+[
+  {
+    "ID": "1",
+    "Nombre Completo": "Ana Ejemplo",
+    "Cliente": "Tienda Aurora Demo",
+    "Correo": "ana@example.invalid"
+  },
+  {
+    "ID": "2",
+    "Nombre Completo": "Luis Prueba",
+    "Cliente": "Librería Horizonte Demo",
+    "Correo": "luis@example.invalid"
+  },
+  {
+    "ID": "3",
+    "Nombre Completo": "María Ejemplo",
+    "Cliente": "Taller Nube Demo",
+    "Correo": ""
+  }
+]

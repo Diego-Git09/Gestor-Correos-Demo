@@ -1,0 +1,10 @@
+# Bibliotecas de módulos históricos y pruebas de bloqueo. Versiones verificadas.
+-r requirements.txt
+customtkinter==6.0.0
+Pillow==13.0.0
+selenium==4.51.0
+webdriver-manager==4.1.2
+keyring==25.7.0
+cryptography==50.0.2
+PyMuPDF==2.0
+psutil==7.2.2

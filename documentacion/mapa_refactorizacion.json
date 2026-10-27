@@ -1,0 +1,722 @@
+[
+  {
+    "nombre": "ruta_recurso",
+    "linea_original": 72,
+    "modulo": "configuracion.py",
+    "integracion_bloqueada": false
+  },
+  {
+    "nombre": "EscritorCola",
+    "linea_original": 165,
+    "modulo": "eventos.py",
+    "integracion_bloqueada": false
+  },
+  {
+    "nombre": "ui_progreso",
+    "linea_original": 209,
+    "modulo": "eventos.py",
+    "integracion_bloqueada": false
+  },
+  {
+    "nombre": "ui_stats",
+    "linea_original": 213,
+    "modulo": "eventos.py",
+    "integracion_bloqueada": false
+  },
+  {
+    "nombre": "ui_aviso",
+    "linea_original": 217,
+    "modulo": "eventos.py",
+    "integracion_bloqueada": false
+  },
+  {
+    "nombre": "ui_fin_campana",
+    "linea_original": 221,
+    "modulo": "eventos.py",
+    "integracion_bloqueada": false
+  },
+  {
+    "nombre": "ui_eta",
+    "linea_original": 226,
+    "modulo": "eventos.py",
+    "integracion_bloqueada": false
+  },
+  {
+    "nombre": "verificar_conexion_internet",
+    "linea_original": 1679,
+    "modulo": "conexion.py",
+    "integracion_bloqueada": true
+  },
+  {
+    "nombre": "es_error_de_red",
+    "linea_original": 1701,
+    "modulo": "conexion.py",
+    "integracion_bloqueada": false
+  },
+  {
+    "nombre": "esperar_reconexion",
+    "linea_original": 1713,
+    "modulo": "conexion.py",
+    "integracion_bloqueada": true
+  },
+  {
+    "nombre": "reciclar_navegadores",
+    "linea_original": 1731,
+    "modulo": "conexion.py",
+    "integracion_bloqueada": true
+  },
+  {
+    "nombre": "fuente_ui",
+    "linea_original": 2241,
+    "modulo": "tema.py",
+    "integracion_bloqueada": false
+  },
+  {
+    "nombre": "_mezclar",
+    "linea_original": 2245,
+    "modulo": "tema.py",
+    "integracion_bloqueada": false
+  },
+  {
+    "nombre": "BarraNeon",
+    "linea_original": 2251,
+    "modulo": "tema.py",
+    "integracion_bloqueada": false
+  },
+  {
+    "nombre": "aplicar_tema",
+    "linea_original": 2269,
+    "modulo": "tema.py",
+    "integracion_bloqueada": false
+  },
+  {
+    "nombre": "tarjeta",
+    "linea_original": 2361,
+    "modulo": "tema.py",
+    "integracion_bloqueada": false
+  },
+  {
+    "nombre": "campo_texto",
+    "linea_original": 2372,
+    "modulo": "tema.py",
+    "integracion_bloqueada": false
+  },
+  {
+    "nombre": "crear_tabla",
+    "linea_original": 2380,
+    "modulo": "tema.py",
+    "integracion_bloqueada": false
+  },
+  {
+    "nombre": "etiqueta_estado",
+    "linea_original": 2399,
+    "modulo": "tema.py",
+    "integracion_bloqueada": false
+  },
+  {
+    "nombre": "ficha_stat",
+    "linea_original": 2541,
+    "modulo": "tema.py",
+    "integracion_bloqueada": false
+  },
+  {
+    "nombre": "sonar_alerta",
+    "linea_original": 2552,
+    "modulo": "tema.py",
+    "integracion_bloqueada": false
+  },
+  {
+    "nombre": "cerrar_sesion_gmail",
+    "linea_original": 111,
+    "modulo": "navegador.py",
+    "integracion_bloqueada": true
+  },
+  {
+    "nombre": "cerrar_alertas_pendientes",
+    "linea_original": 732,
+    "modulo": "navegador.py",
+    "integracion_bloqueada": false
+  },
+  {
+    "nombre": "app_frontal_mac",
+    "linea_original": 741,
+    "modulo": "navegador.py",
+    "integracion_bloqueada": false
+  },
+  {
+    "nombre": "devolver_foco_mac",
+    "linea_original": 754,
+    "modulo": "navegador.py",
+    "integracion_bloqueada": false
+  },
+  {
+    "nombre": "chrome_instalado",
+    "linea_original": 895,
+    "modulo": "navegador.py",
+    "integracion_bloqueada": false
+  },
+  {
+    "nombre": "obtener_ruta_driver",
+    "linea_original": 910,
+    "modulo": "navegador.py",
+    "integracion_bloqueada": true
+  },
+  {
+    "nombre": "iniciar_chrome",
+    "linea_original": 917,
+    "modulo": "navegador.py",
+    "integracion_bloqueada": true
+  },
+  {
+    "nombre": "limpiar_candados_perfil",
+    "linea_original": 930,
+    "modulo": "navegador.py",
+    "integracion_bloqueada": true
+  },
+  {
+    "nombre": "_tamano_mb",
+    "linea_original": 947,
+    "modulo": "navegador.py",
+    "integracion_bloqueada": false
+  },
+  {
+    "nombre": "limpiar_cache_perfil",
+    "linea_original": 958,
+    "modulo": "navegador.py",
+    "integracion_bloqueada": true
+  },
+  {
+    "nombre": "crear_driver",
+    "linea_original": 974,
+    "modulo": "navegador.py",
+    "integracion_bloqueada": true
+  },
+  {
+    "nombre": "_procesos_del_driver",
+    "linea_original": 1061,
+    "modulo": "navegador.py",
+    "integracion_bloqueada": false
+  },
+  {
+    "nombre": "_procesos_vivos",
+    "linea_original": 1075,
+    "modulo": "navegador.py",
+    "integracion_bloqueada": false
+  },
+  {
+    "nombre": "cerrar_driver",
+    "linea_original": 1092,
+    "modulo": "navegador.py",
+    "integracion_bloqueada": false
+  },
+  {
+    "nombre": "esperar_interactuable",
+    "linea_original": 1149,
+    "modulo": "navegador.py",
+    "integracion_bloqueada": false
+  },
+  {
+    "nombre": "compose_abierto",
+    "linea_original": 1163,
+    "modulo": "navegador.py",
+    "integracion_bloqueada": false
+  },
+  {
+    "nombre": "esperar_cierre_compose",
+    "linea_original": 1170,
+    "modulo": "navegador.py",
+    "integracion_bloqueada": false
+  },
+  {
+    "nombre": "DestinatarioNoRegistrado",
+    "linea_original": 147,
+    "modulo": "excepciones.py",
+    "integracion_bloqueada": false
+  },
+  {
+    "nombre": "EnvioNoConfirmado",
+    "linea_original": 154,
+    "modulo": "excepciones.py",
+    "integracion_bloqueada": false
+  },
+  {
+    "nombre": "formatear_duracion",
+    "linea_original": 230,
+    "modulo": "utilidades.py",
+    "integracion_bloqueada": false
+  },
+  {
+    "nombre": "texto_eta",
+    "linea_original": 237,
+    "modulo": "utilidades.py",
+    "integracion_bloqueada": false
+  },
+  {
+    "nombre": "dormir",
+    "linea_original": 244,
+    "modulo": "utilidades.py",
+    "integracion_bloqueada": false
+  },
+  {
+    "nombre": "log_debug",
+    "linea_original": 253,
+    "modulo": "utilidades.py",
+    "integracion_bloqueada": false
+  },
+  {
+    "nombre": "abrir_ruta",
+    "linea_original": 260,
+    "modulo": "utilidades.py",
+    "integracion_bloqueada": false
+  },
+  {
+    "nombre": "extraer_email_de_texto",
+    "linea_original": 273,
+    "modulo": "utilidades.py",
+    "integracion_bloqueada": false
+  },
+  {
+    "nombre": "sanitizar_texto",
+    "linea_original": 1654,
+    "modulo": "utilidades.py",
+    "integracion_bloqueada": false
+  },
+  {
+    "nombre": "restringir_permisos",
+    "linea_original": 1667,
+    "modulo": "utilidades.py",
+    "integracion_bloqueada": false
+  },
+  {
+    "nombre": "_es_nulo",
+    "linea_original": 285,
+    "modulo": "validacion.py",
+    "integracion_bloqueada": false
+  },
+  {
+    "nombre": "normalizar_id",
+    "linea_original": 290,
+    "modulo": "validacion.py",
+    "integracion_bloqueada": false
+  },
+  {
+    "nombre": "normalizar_correo",
+    "linea_original": 1575,
+    "modulo": "validacion.py",
+    "integracion_bloqueada": false
+  },
+  {
+    "nombre": "_sin_acentos",
+    "linea_original": 1598,
+    "modulo": "validacion.py",
+    "integracion_bloqueada": false
+  },
+  {
+    "nombre": "_clave",
+    "linea_original": 1605,
+    "modulo": "validacion.py",
+    "integracion_bloqueada": false
+  },
+  {
+    "nombre": "_es_titulo",
+    "linea_original": 1609,
+    "modulo": "validacion.py",
+    "integracion_bloqueada": false
+  },
+  {
+    "nombre": "_es_institucional",
+    "linea_original": 1613,
+    "modulo": "validacion.py",
+    "integracion_bloqueada": false
+  },
+  {
+    "nombre": "_letras",
+    "linea_original": 1617,
+    "modulo": "validacion.py",
+    "integracion_bloqueada": false
+  },
+  {
+    "nombre": "primer_nombre",
+    "linea_original": 1621,
+    "modulo": "validacion.py",
+    "integracion_bloqueada": false
+  },
+  {
+    "nombre": "obtener_nombre",
+    "linea_original": 1639,
+    "modulo": "validacion.py",
+    "integracion_bloqueada": false
+  },
+  {
+    "nombre": "obtener_cliente",
+    "linea_original": 1642,
+    "modulo": "validacion.py",
+    "integracion_bloqueada": false
+  },
+  {
+    "nombre": "obtener_rubro",
+    "linea_original": 1645,
+    "modulo": "validacion.py",
+    "integracion_bloqueada": false
+  },
+  {
+    "nombre": "_escribir_filas_log",
+    "linea_original": 300,
+    "modulo": "reportes.py",
+    "integracion_bloqueada": false
+  },
+  {
+    "nombre": "_unir_pendiente",
+    "linea_original": 309,
+    "modulo": "reportes.py",
+    "integracion_bloqueada": false
+  },
+  {
+    "nombre": "registrar_log",
+    "linea_original": 321,
+    "modulo": "reportes.py",
+    "integracion_bloqueada": false
+  },
+  {
+    "nombre": "leer_log",
+    "linea_original": 339,
+    "modulo": "reportes.py",
+    "integracion_bloqueada": false
+  },
+  {
+    "nombre": "ultimos_estados_log",
+    "linea_original": 353,
+    "modulo": "reportes.py",
+    "integracion_bloqueada": false
+  },
+  {
+    "nombre": "cargar_correos_enviados",
+    "linea_original": 358,
+    "modulo": "reportes.py",
+    "integracion_bloqueada": false
+  },
+  {
+    "nombre": "cargar_estados_log_activo",
+    "linea_original": 375,
+    "modulo": "reportes.py",
+    "integracion_bloqueada": false
+  },
+  {
+    "nombre": "log_completo",
+    "linea_original": 379,
+    "modulo": "reportes.py",
+    "integracion_bloqueada": false
+  },
+  {
+    "nombre": "archivar_log",
+    "linea_original": 391,
+    "modulo": "reportes.py",
+    "integracion_bloqueada": false
+  },
+  {
+    "nombre": "cargar_contactos_pendientes_revision",
+    "linea_original": 404,
+    "modulo": "reportes.py",
+    "integracion_bloqueada": false
+  },
+  {
+    "nombre": "huella_plantilla",
+    "linea_original": 431,
+    "modulo": "reportes.py",
+    "integracion_bloqueada": false
+  },
+  {
+    "nombre": "rutas_reportes_envios",
+    "linea_original": 436,
+    "modulo": "reportes.py",
+    "integracion_bloqueada": false
+  },
+  {
+    "nombre": "preparar_campana",
+    "linea_original": 575,
+    "modulo": "reportes.py",
+    "integracion_bloqueada": false
+  },
+  {
+    "nombre": "sugerir_rango",
+    "linea_original": 685,
+    "modulo": "reportes.py",
+    "integracion_bloqueada": false
+  },
+  {
+    "nombre": "resumen_previo",
+    "linea_original": 2855,
+    "modulo": "reportes.py",
+    "integracion_bloqueada": false
+  },
+  {
+    "nombre": "cargar_config",
+    "linea_original": 447,
+    "modulo": "persistencia.py",
+    "integracion_bloqueada": false
+  },
+  {
+    "nombre": "guardar_config",
+    "linea_original": 460,
+    "modulo": "persistencia.py",
+    "integracion_bloqueada": false
+  },
+  {
+    "nombre": "escribir_json_atomico",
+    "linea_original": 488,
+    "modulo": "persistencia.py",
+    "integracion_bloqueada": false
+  },
+  {
+    "nombre": "actualizar_config",
+    "linea_original": 503,
+    "modulo": "persistencia.py",
+    "integracion_bloqueada": false
+  },
+  {
+    "nombre": "_cifrador",
+    "linea_original": 511,
+    "modulo": "credenciales.py",
+    "integracion_bloqueada": true
+  },
+  {
+    "nombre": "guardar_identidad",
+    "linea_original": 523,
+    "modulo": "credenciales.py",
+    "integracion_bloqueada": true
+  },
+  {
+    "nombre": "recuperar_credenciales",
+    "linea_original": 531,
+    "modulo": "credenciales.py",
+    "integracion_bloqueada": true
+  },
+  {
+    "nombre": "credenciales_manager_desde_entorno",
+    "linea_original": 675,
+    "modulo": "credenciales.py",
+    "integracion_bloqueada": true
+  },
+  {
+    "nombre": "deduplicar_contactos",
+    "linea_original": 539,
+    "modulo": "contactos.py",
+    "integracion_bloqueada": false
+  },
+  {
+    "nombre": "cargar_contactos",
+    "linea_original": 555,
+    "modulo": "contactos.py",
+    "integracion_bloqueada": false
+  },
+  {
+    "nombre": "validar_cartera",
+    "linea_original": 564,
+    "modulo": "contactos.py",
+    "integracion_bloqueada": false
+  },
+  {
+    "nombre": "_tabla_lista",
+    "linea_original": 594,
+    "modulo": "crm.py",
+    "integracion_bloqueada": false
+  },
+  {
+    "nombre": "_esperar_recarga",
+    "linea_original": 598,
+    "modulo": "crm.py",
+    "integracion_bloqueada": false
+  },
+  {
+    "nombre": "sincronizar_contactos_crm",
+    "linea_original": 604,
+    "modulo": "crm.py",
+    "integracion_bloqueada": true
+  },
+  {
+    "nombre": "leer_correo_crm",
+    "linea_original": 1506,
+    "modulo": "crm.py",
+    "integracion_bloqueada": true
+  },
+  {
+    "nombre": "registrar_gestion_crm",
+    "linea_original": 1521,
+    "modulo": "crm.py",
+    "integracion_bloqueada": true
+  },
+  {
+    "nombre": "login_crm",
+    "linea_original": 1546,
+    "modulo": "crm.py",
+    "integracion_bloqueada": true
+  },
+  {
+    "nombre": "renderizar_plantilla",
+    "linea_original": 714,
+    "modulo": "plantillas.py",
+    "integracion_bloqueada": false
+  },
+  {
+    "nombre": "variables_desconocidas",
+    "linea_original": 726,
+    "modulo": "plantillas.py",
+    "integracion_bloqueada": false
+  },
+  {
+    "nombre": "_comprimir_con_fitz",
+    "linea_original": 765,
+    "modulo": "documentos.py",
+    "integracion_bloqueada": false
+  },
+  {
+    "nombre": "_comprimir_con_pypdf",
+    "linea_original": 779,
+    "modulo": "documentos.py",
+    "integracion_bloqueada": false
+  },
+  {
+    "nombre": "validar_integridad_pdf",
+    "linea_original": 810,
+    "modulo": "documentos.py",
+    "integracion_bloqueada": false
+  },
+  {
+    "nombre": "preparar_pdf_adjunto",
+    "linea_original": 843,
+    "modulo": "documentos.py",
+    "integracion_bloqueada": false
+  },
+  {
+    "nombre": "activar_prevision_suspension",
+    "linea_original": 1187,
+    "modulo": "sistema.py",
+    "integracion_bloqueada": false
+  },
+  {
+    "nombre": "desactivar_prevision_suspension",
+    "linea_original": 1203,
+    "modulo": "sistema.py",
+    "integracion_bloqueada": false
+  },
+  {
+    "nombre": "vigilar_saltos_de_tiempo",
+    "linea_original": 1219,
+    "modulo": "sistema.py",
+    "integracion_bloqueada": false
+  },
+  {
+    "nombre": "resetear_gmail",
+    "linea_original": 1272,
+    "modulo": "correo.py",
+    "integracion_bloqueada": true
+  },
+  {
+    "nombre": "asegurar_sesion_gmail",
+    "linea_original": 1282,
+    "modulo": "correo.py",
+    "integracion_bloqueada": true
+  },
+  {
+    "nombre": "garantizar_sesion_gmail",
+    "linea_original": 1307,
+    "modulo": "correo.py",
+    "integracion_bloqueada": true
+  },
+  {
+    "nombre": "escribir_en_cuerpo",
+    "linea_original": 1333,
+    "modulo": "correo.py",
+    "integracion_bloqueada": true
+  },
+  {
+    "nombre": "adjuntar_pdf",
+    "linea_original": 1349,
+    "modulo": "correo.py",
+    "integracion_bloqueada": true
+  },
+  {
+    "nombre": "_dialogo_redaccion",
+    "linea_original": 1372,
+    "modulo": "correo.py",
+    "integracion_bloqueada": false
+  },
+  {
+    "nombre": "_campo_para",
+    "linea_original": 1386,
+    "modulo": "correo.py",
+    "integracion_bloqueada": false
+  },
+  {
+    "nombre": "_correos_destinatarios",
+    "linea_original": 1395,
+    "modulo": "correo.py",
+    "integracion_bloqueada": false
+  },
+  {
+    "nombre": "destinatario_registrado",
+    "linea_original": 1411,
+    "modulo": "correo.py",
+    "integracion_bloqueada": false
+  },
+  {
+    "nombre": "escribir_destinatario",
+    "linea_original": 1419,
+    "modulo": "correo.py",
+    "integracion_bloqueada": true
+  },
+  {
+    "nombre": "componer_y_enviar",
+    "linea_original": 1448,
+    "modulo": "correo.py",
+    "integracion_bloqueada": true
+  },
+  {
+    "nombre": "ejecutar_bot",
+    "linea_original": 1765,
+    "modulo": "automatizacion.py",
+    "integracion_bloqueada": true
+  },
+  {
+    "nombre": "pillow_disponible",
+    "linea_original": 2417,
+    "modulo": "imagenes.py",
+    "integracion_bloqueada": false
+  },
+  {
+    "nombre": "cargar_logo_chico",
+    "linea_original": 2425,
+    "modulo": "imagenes.py",
+    "integracion_bloqueada": false
+  },
+  {
+    "nombre": "construir_marca_de_agua",
+    "linea_original": 2436,
+    "modulo": "imagenes.py",
+    "integracion_bloqueada": false
+  },
+  {
+    "nombre": "LogCanvas",
+    "linea_original": 2450,
+    "modulo": "imagenes.py",
+    "integracion_bloqueada": false
+  },
+  {
+    "nombre": "VentanaProgreso",
+    "linea_original": 2579,
+    "modulo": "progreso.py",
+    "integracion_bloqueada": false
+  },
+  {
+    "nombre": "lanzar_gui",
+    "linea_original": 2880,
+    "modulo": "formulario.py",
+    "integracion_bloqueada": true
+  },
+  {
+    "nombre": "vista_previa_ventana",
+    "linea_original": 3405,
+    "modulo": "formulario.py",
+    "integracion_bloqueada": true
+  }
+]

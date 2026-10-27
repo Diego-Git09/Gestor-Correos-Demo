@@ -1,0 +1,15 @@
+/datos/
+/.venv/
+__pycache__/
+*.py[cod]
+*.log
+*.csv
+*.exe
+*.spec
+/build/
+/dist*/
+.env
+.env.*
+bot_config.json
+contactos_sincronizados.json
+/logs_ejecucion/

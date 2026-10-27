@@ -1,0 +1,16 @@
+{
+  "fecha": "2026-10-27",
+  "original_intacto": true,
+  "definiciones_originales": 120,
+  "definiciones_mapeadas": 120,
+  "faltantes": [],
+  "firmas_cambiadas": [],
+  "errores_sintaxis": [],
+  "referencias_organizacion_original": [],
+  "modulos_originales_separados": 21,
+  "python_copia": 28,
+  "parametros_con_constantes_reubicadas": [
+    "esperar_reconexion",
+    "construir_marca_de_agua"
+  ]
+}

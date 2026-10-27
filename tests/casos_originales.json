@@ -1,0 +1,241 @@
+[
+  {
+    "funcion": "normalizar_id",
+    "argumentos": [
+      null
+    ],
+    "esperado": ""
+  },
+  {
+    "funcion": "normalizar_id",
+    "argumentos": [
+      "001"
+    ],
+    "esperado": "001"
+  },
+  {
+    "funcion": "normalizar_id",
+    "argumentos": [
+      1
+    ],
+    "esperado": "1"
+  },
+  {
+    "funcion": "normalizar_id",
+    "argumentos": [
+      1.0
+    ],
+    "esperado": "1"
+  },
+  {
+    "funcion": "normalizar_id",
+    "argumentos": [
+      " 42 "
+    ],
+    "esperado": "42"
+  },
+  {
+    "funcion": "normalizar_id",
+    "argumentos": [
+      "nan"
+    ],
+    "esperado": ""
+  },
+  {
+    "funcion": "normalizar_id",
+    "argumentos": [
+      "3.0"
+    ],
+    "esperado": "3"
+  },
+  {
+    "funcion": "primer_nombre",
+    "argumentos": [
+      "Sra. Ana Ejemplo"
+    ],
+    "esperado": "Sra"
+  },
+  {
+    "funcion": "primer_nombre",
+    "argumentos": [
+      "María José Ejemplo"
+    ],
+    "esperado": "María"
+  },
+  {
+    "funcion": "primer_nombre",
+    "argumentos": [
+      "Área Compras"
+    ],
+    "esperado": "Estimada/o"
+  },
+  {
+    "funcion": "primer_nombre",
+    "argumentos": [
+      ""
+    ],
+    "esperado": "Estimada/o"
+  },
+  {
+    "funcion": "primer_nombre",
+    "argumentos": [
+      null
+    ],
+    "esperado": "Estimada/o"
+  },
+  {
+    "funcion": "primer_nombre",
+    "argumentos": [
+      "juan perez"
+    ],
+    "esperado": "Juan"
+  },
+  {
+    "funcion": "normalizar_correo",
+    "argumentos": [
+      " ANA@EXAMPLE.INVALID "
+    ],
+    "esperado": "ana@example.invalid"
+  },
+  {
+    "funcion": "normalizar_correo",
+    "argumentos": [
+      "no-es-correo"
+    ],
+    "esperado": null
+  },
+  {
+    "funcion": "normalizar_correo",
+    "argumentos": [
+      ""
+    ],
+    "esperado": null
+  },
+  {
+    "funcion": "normalizar_correo",
+    "argumentos": [
+      null
+    ],
+    "esperado": null
+  },
+  {
+    "funcion": "normalizar_correo",
+    "argumentos": [
+      "uno@example.invalid"
+    ],
+    "esperado": "uno@example.invalid"
+  },
+  {
+    "funcion": "sanitizar_texto",
+    "argumentos": [
+      "Hola\u0000 mundo\nPrueba"
+    ],
+    "esperado": "Hola mundo\nPrueba"
+  },
+  {
+    "funcion": "sanitizar_texto",
+    "argumentos": [
+      "texto normal"
+    ],
+    "esperado": "texto normal"
+  },
+  {
+    "funcion": "renderizar_plantilla",
+    "argumentos": [
+      "Hola {nombre} de {cliente}",
+      {
+        "nombre": "Ana",
+        "cliente": "Tienda Demo"
+      }
+    ],
+    "esperado": "Hola Ana de Tienda Demo"
+  },
+  {
+    "funcion": "renderizar_plantilla",
+    "argumentos": [
+      "{nombre} {desconocido}",
+      {
+        "NOMBRE": "Luis"
+      }
+    ],
+    "esperado": "Luis {desconocido}"
+  },
+  {
+    "funcion": "variables_desconocidas",
+    "argumentos": [
+      "Hola {nombre} {cliente}"
+    ],
+    "esperado": []
+  },
+  {
+    "funcion": "variables_desconocidas",
+    "argumentos": [
+      "{rubro} {otra}"
+    ],
+    "esperado": [
+      "otra"
+    ]
+  },
+  {
+    "funcion": "deduplicar_contactos",
+    "argumentos": [
+      [
+        {
+          "ID": "1",
+          "Nombre": "Ana",
+          "Correo": "ANA@EXAMPLE.INVALID"
+        },
+        {
+          "ID": "1",
+          "Nombre": "Luis"
+        },
+        {
+          "ID": "2",
+          "Nombre": "Luis"
+        }
+      ]
+    ],
+    "esperado": [
+      {
+        "ID": "1",
+        "Nombre": "Ana",
+        "Cliente": "",
+        "Correo": "ana@example.invalid"
+      },
+      {
+        "ID": "2",
+        "Nombre": "Luis",
+        "Cliente": "",
+        "Correo": ""
+      }
+    ]
+  },
+  {
+    "funcion": "formatear_duracion",
+    "argumentos": [
+      0
+    ],
+    "esperado": "1 min"
+  },
+  {
+    "funcion": "formatear_duracion",
+    "argumentos": [
+      60
+    ],
+    "esperado": "1 min"
+  },
+  {
+    "funcion": "formatear_duracion",
+    "argumentos": [
+      3600
+    ],
+    "esperado": "1 h 00 min"
+  },
+  {
+    "funcion": "formatear_duracion",
+    "argumentos": [
+      7200
+    ],
+    "esperado": "2 h 00 min"
+  }
+]
